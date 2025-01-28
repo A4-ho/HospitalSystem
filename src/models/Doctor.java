@@ -10,8 +10,6 @@ public class Doctor {
         this.name = name;
         this.specialization = specialization;
     }
-
-    // Getters and Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getName() { return name; }
