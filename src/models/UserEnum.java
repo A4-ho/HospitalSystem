@@ -6,12 +6,10 @@ public enum UserEnum {
 
     private final int value;
 
-    // Constructor to assign integer value to each enum constant
     UserEnum(int value) {
         this.value = value;
     }
 
-    // Getter method to retrieve the integer value
     public int getValue() {
         return value;
     }
