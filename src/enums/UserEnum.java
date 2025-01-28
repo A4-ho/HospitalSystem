@@ -1,4 +1,4 @@
-package src.models;
+package src.enums;
 
 public enum UserEnum {
     DOCTOR(2),

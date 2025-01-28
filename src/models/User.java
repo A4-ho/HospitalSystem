@@ -1,11 +1,13 @@
 package src.models;
 
+import src.enums.UserEnum;
+
 public class User {
     private String username;
     private String firstname;
     private String email;
     private String password;
-    private src.models.UserEnum role;
+    private UserEnum role;
 
     public User() {
 
