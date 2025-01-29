@@ -1,33 +1,44 @@
 package src.models;
 
-public class Patient {
-    private int id;
-    private String name;
-    private String surname;
-    private int age;
-    private String gender;
-    private String email;
+import src.enums.Gender;
+import src.enums.Role;
+import src.enums.Specialization;
+import src.enums.Symptom;
 
-    public Patient(int id, String name, int age, String gender, String email) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname; 
-        this.age = age;
+import java.util.List;
+
+public class Patient extends User {
+    private Gender gender;
+    private Specialization specialization;
+    private int age;
+    private List<Symptom> symptoms;  // A patient can have multiple symptoms
+
+    public Patient(String email, String password, String name, String surname, Gender gender, Specialization specialization, int age, List<Symptom> symptoms) {
+        super(email, password, Role.PATIENT, name, surname);
         this.gender = gender;
-        this.email = email;
+        this.specialization = specialization;
+        this.age = age;
+        this.symptoms = symptoms;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getSurname() {return surname; }
-    public void setSurname(String surname) {this.surname = surname;} 
+    public Gender getGender() { return gender; }
+    public Specialization getSpecialization() { return specialization; }
     public int getAge() { return age; }
+    public List<Symptom> getSymptoms() { return symptoms; }
+
+    public void setGender(Gender gender) { this.gender = gender; }
+    public void setSpecialization(Specialization specialization) { this.specialization = specialization; }
     public void setAge(int age) { this.age = age; }
-    public String getGender() { return gender; }
-    public void setGender(String gender) { this.gender = gender; }
-    public String getEmail() { return email; }
-    public void setEmail() { this.email = email; } 
-   
+    public void setSymptoms(List<Symptom> symptoms) { this.symptoms = symptoms; }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "gender=" + gender +
+                ", specialization=" + specialization +
+                ", age=" + age +
+                ", symptoms=" + symptoms +
+                '}';
+    }
 }
+

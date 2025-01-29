@@ -1,29 +1,30 @@
 package src.models;
 
-import src.enums.DoctorEnum;
+import src.enums.Gender;
+import src.enums.Role;
+import src.enums.Specialization;
 
-public class Doctor {
-    private int id;
-    private String name;
-    private String surname;
-    private int gender;
-    private DoctorEnum specialization;
+public class Doctor extends User {
+    private Gender gender;
+    private Specialization specialization;
 
-    public Doctor(int id, String name, DoctorEnum specialization,String surname, int gender) {
-        this.id = id;
-        this.name = name;
-        this.specialization = specialization;
-        this.surname = surname;
+    public Doctor(String email, String password, String name, String surname, Gender gender, Specialization specialization) {
+        super(email, password, Role.DOCTOR, name, surname);
         this.gender = gender;
+        this.specialization = specialization;
     }
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public DoctorEnum getSpecialization() { return specialization; }
-    public void setSpecialization(DoctorEnum specialization) { this.specialization = specialization; }
-    public String getSurname() { return surname; }
-    public void setSurname(String surname) { this.surname = surname; }
-    public int getGender() { return gender; }
-    public void setGender(int gender) { this.gender = gender; }
+
+    public Gender getGender() { return gender; }
+    public Specialization getSpecialization() { return specialization; }
+
+    public void setGender(Gender gender) { this.gender = gender; }
+    public void setSpecialization(Specialization specialization) { this.specialization = specialization; }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "gender=" + gender +
+                ", specialization=" + specialization +
+                '}';
+    }
 }

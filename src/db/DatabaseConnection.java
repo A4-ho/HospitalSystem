@@ -2,9 +2,7 @@ package src.db;
 
 import src.db.interfaces.IDB;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseConnection implements IDB {
     private String host;
