@@ -1,6 +1,6 @@
 # 🚑 HospitalSystem
 
-![Java](https://img.shields.io/badge/Java-11%2B-blue.svg) ![Maven](https://img.shields.io/badge/Maven-Build-green.svg) ![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange.svg)
+![Java](https://img.shields.io/badge/Java-11%2B-blue.svg) ![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange.svg)
 
 ## 🏥 Overview
 
