@@ -1,13 +1,15 @@
 package src.models;
 
+import src.enums.DoctorEnum;
+
 public class Doctor {
     private int id;
     private String name;
     private String surname;
     private int gender;
-    private String specialization;
+    private DoctorEnum specialization;
 
-    public Doctor(int id, String name, String specialization,String surname, int gender) {
+    public Doctor(int id, String name, DoctorEnum specialization,String surname, int gender) {
         this.id = id;
         this.name = name;
         this.specialization = specialization;
@@ -18,8 +20,8 @@ public class Doctor {
     public void setId(int id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-    public String getSpecialization() { return specialization; }
-    public void setSpecialization(String specialization) { this.specialization = specialization; }
+    public DoctorEnum getSpecialization() { return specialization; }
+    public void setSpecialization(DoctorEnum specialization) { this.specialization = specialization; }
     public String getSurname() { return surname; }
     public void setSurname(String surname) { this.surname = surname; }
     public int getGender() { return gender; }
