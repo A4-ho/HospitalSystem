@@ -1,44 +1,20 @@
 package src.models;
 
-import src.enums.Gender;
 import src.enums.Role;
-import src.enums.Specialization;
-import src.enums.Symptom;
 
-import java.util.List;
 
-public class Patient extends User {
-    private Gender gender;
-    private Specialization specialization;
+public class Patient extends src.models.User {
     private int age;
-    private List<Symptom> symptoms;  // A patient can have multiple symptoms
+    private int doctorId; // Assigned doctor
 
-    public Patient(String email, String password, String name, String surname, Gender gender, Specialization specialization, int age, List<Symptom> symptoms) {
-        super(email, password, Role.PATIENT, name, surname);
-        this.gender = gender;
-        this.specialization = specialization;
+    public Patient(int id, String name, String surname, String email, String password,Role role, int age, int doctorId) {
+        super(id, name, surname , email, password,role);
         this.age = age;
-        this.symptoms = symptoms;
+        this.doctorId = doctorId;
     }
 
-    public Gender getGender() { return gender; }
-    public Specialization getSpecialization() { return specialization; }
     public int getAge() { return age; }
-    public List<Symptom> getSymptoms() { return symptoms; }
-
-    public void setGender(Gender gender) { this.gender = gender; }
-    public void setSpecialization(Specialization specialization) { this.specialization = specialization; }
-    public void setAge(int age) { this.age = age; }
-    public void setSymptoms(List<Symptom> symptoms) { this.symptoms = symptoms; }
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "gender=" + gender +
-                ", specialization=" + specialization +
-                ", age=" + age +
-                ", symptoms=" + symptoms +
-                '}';
-    }
+    public int getDoctorId() { return doctorId; }
 }
+
 

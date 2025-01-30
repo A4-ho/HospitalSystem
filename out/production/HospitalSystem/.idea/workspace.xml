@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9268f022-ff6b-4c6d-a7df-876d299c02ea" name="Changes" comment="database connected" />
+    <list default="true" id="9268f022-ff6b-4c6d-a7df-876d299c02ea" name="Changes" comment="well did smth">
+      <change beforePath="$PROJECT_DIR$/src/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/interfaces/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/interfaces/IUserRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,12 +18,25 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <favorite-branches>
       <branch-storage>
         <map>
@@ -38,9 +55,10 @@
         <option value="k1ays &lt;tasimov82@bk.ru&gt;" />
       </list>
     </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="DataBase" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,33 +93,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HospitalManagement.executor": "Run",
-    "Application.HospitalManagmentSystem.executor": "Run",
-    "Application.HospitalSystem.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Rebasing main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anel/Downloads/postgresql-42.7.5.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HospitalManagement.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HospitalManagmentSystem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HospitalSystem.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Rebasing main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anel/Downloads/postgresql-42.7.5.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="HospitalSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HospitalSystem" />
@@ -149,7 +167,17 @@
       <workItem from="1738129589970" duration="2040000" />
       <workItem from="1738132265174" duration="3141000" />
       <workItem from="1738135955207" duration="1281000" />
-      <workItem from="1738137819828" duration="728000" />
+      <workItem from="1738137819828" duration="1456000" />
+      <workItem from="1738166838158" duration="6412000" />
+      <workItem from="1738175208325" duration="238000" />
+      <workItem from="1738215560020" duration="698000" />
+      <workItem from="1738331609363" duration="862000" />
+      <workItem from="1738407535478" duration="15000" />
+      <workItem from="1738407561596" duration="481000" />
+      <workItem from="1738505498530" duration="600000" />
+      <workItem from="1738506121788" duration="5519000" />
+      <workItem from="1738512490072" duration="6000" />
+      <workItem from="1738731903826" duration="2039000" />
     </task>
     <task id="LOCAL-00001" summary="start of mine">
       <option name="closed" value="true" />
@@ -255,11 +283,86 @@
       <option name="project" value="LOCAL" />
       <updated>1738136346046</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Update">
+      <option name="closed" value="true" />
+      <created>1738171639120</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738171639120</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update">
+      <option name="closed" value="true" />
+      <created>1738171656131</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738171656131</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Update">
+      <option name="closed" value="true" />
+      <created>1738172603731</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1738172603731</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update">
+      <option name="closed" value="true" />
+      <created>1738172673525</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1738172673525</updated>
+    </task>
+    <task id="LOCAL-00018" summary="deleted enums connected db main">
+      <option name="closed" value="true" />
+      <created>1738506071184</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1738506071184</updated>
+    </task>
+    <task id="LOCAL-00019" summary="deleted enums connected db main">
+      <option name="closed" value="true" />
+      <created>1738506081819</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1738506081819</updated>
+    </task>
+    <task id="LOCAL-00020" summary="well did smth">
+      <option name="closed" value="true" />
+      <created>1738512445846</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1738512445846</updated>
+    </task>
+    <task id="LOCAL-00021" summary="well did smth">
+      <option name="closed" value="true" />
+      <created>1738512452105</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1738512452105</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start of mine" />
@@ -269,18 +372,11 @@
     <MESSAGE value="Merge pull request #8 from A4-ho/fixingDoctor&#10;&#10;fixed the Doctor.java class" />
     <MESSAGE value="&#10;&#10;fixed the Doctor.java class" />
     <MESSAGE value="database connected" />
-    <option name="LAST_COMMIT_MESSAGE" value="database connected" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/models/Patient.java</url>
-          <line>3</line>
-          <properties field="id" class="src.models.Patient" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Update README.md" />
+    <MESSAGE value="Update" />
+    <MESSAGE value="Merge branch 'main' of https://github.com/A4-ho/HospitalSystem" />
+    <MESSAGE value="deleted enums connected db main" />
+    <MESSAGE value="well did smth" />
+    <option name="LAST_COMMIT_MESSAGE" value="well did smth" />
   </component>
 </project>
