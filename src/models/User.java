@@ -1,6 +1,5 @@
 package src.models;
 
-import src.enums.Role;
 
 public abstract class User {
     private int id;
@@ -8,9 +7,9 @@ public abstract class User {
     private String surname;
     private String email;
     private String password;
-    private Role role;
+    private String role;
 
-    public User(int id, String name, String surname, String email, String password ,Role role) {
+    public User(int id, String name, String surname, String email, String password ,String role) {
         this.id = id;
         this.name = name;
         this.surname = surname;

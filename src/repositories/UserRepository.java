@@ -4,16 +4,18 @@ import src.models.User;
 import java.sql.*;
 
 public class UserRepository {
-    public UserRepository(){
 
+    private Connection connection;
+
+    public UserRepository(Connection connection) {
+        this.connection=connection;
     }
 
     public void addUser(User user) {
         String sql = "INSERT INTO users (email, password, role, name, surname) VALUES (?, ?, ?, ?, ?)";
 
         Connection connection;
-        try (
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getPassword());
