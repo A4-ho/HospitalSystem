@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9268f022-ff6b-4c6d-a7df-876d299c02ea" name="Changes" comment="well did smth" />
+    <list default="true" id="8a74ce0f-898a-4f3d-853f-bd48abce04f7" name="Changes" comment="added SymptomsEnum">
+      <change beforePath="$PROJECT_DIR$/src/models/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Patient.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,379 +16,92 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="new_classUser" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="k1ays &lt;tasimov82@bk.ru&gt;" />
-      </list>
-    </option>
-    <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="PUSH_TAGS">
-      <GitPushTagMode>
-        <option name="argument" value="--tags" />
-        <option name="title" value="All" />
-      </GitPushTagMode>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="new_classes" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {}
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;imaknvg&quot;
+  }
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/A4-ho/HospitalSystem.git&quot;,
-    &quot;accountId&quot;: &quot;96463d33-ac1e-4a50-bfad-0e43ccbaa2b3&quot;
-  },
-  &quot;recentNewPullRequestHead&quot;: {
-    &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
-    },
-    &quot;owner&quot;: &quot;A4-ho&quot;,
-    &quot;repository&quot;: &quot;HospitalSystem&quot;
+    &quot;accountId&quot;: &quot;3b065151-2e89-44e6-897d-59a3aea934dc&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2sFlL7qnZca8d3XvuDqiCNdtIKr" />
+  <component name="ProjectId" id="2sGNEfR0GAqWBviy74zWWIpbm2N" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HospitalManagement.executor": "Run",
-    "Application.HospitalManagmentSystem.executor": "Run",
-    "Application.HospitalSystem.executor": "Coverage",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Rebasing main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anel/Downloads/postgresql-42.7.5.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
-    ]
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HospitalManagmentSystem.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="HospitalSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HospitalSystem" />
-      <module name="HospitalSystem" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.HospitalSystem" />
-        <item itemvalue="Application.HospitalSystem" />
-        <item itemvalue="Application.HospitalSystem" />
-        <item itemvalue="Application.HospitalSystem" />
-        <item itemvalue="Application.HospitalSystem" />
-      </list>
-    </recent_temporary>
-  </component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9268f022-ff6b-4c6d-a7df-876d299c02ea" name="Changes" comment="" />
-      <created>1738059146512</created>
+      <changelist id="8a74ce0f-898a-4f3d-853f-bd48abce04f7" name="Changes" comment="" />
+      <created>1738077841915</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1738059146512</updated>
-      <workItem from="1738059147848" duration="606000" />
-      <workItem from="1738064750150" duration="40000" />
-      <workItem from="1738064823107" duration="25000" />
-      <workItem from="1738065264870" duration="10000" />
-      <workItem from="1738065417864" duration="35000" />
-      <workItem from="1738066080014" duration="1352000" />
-      <workItem from="1738069804737" duration="126000" />
-      <workItem from="1738069940832" duration="2054000" />
-      <workItem from="1738072037542" duration="489000" />
-      <workItem from="1738129418712" duration="10000" />
-      <workItem from="1738129589970" duration="2040000" />
-      <workItem from="1738132265174" duration="3141000" />
-      <workItem from="1738135955207" duration="1281000" />
-      <workItem from="1738137819828" duration="1456000" />
-      <workItem from="1738166838158" duration="6412000" />
-      <workItem from="1738175208325" duration="238000" />
-      <workItem from="1738215560020" duration="698000" />
-      <workItem from="1738331609363" duration="862000" />
-      <workItem from="1738407535478" duration="15000" />
-      <workItem from="1738407561596" duration="481000" />
-      <workItem from="1738505498530" duration="600000" />
-      <workItem from="1738506121788" duration="5519000" />
-      <workItem from="1738512490072" duration="6000" />
-      <workItem from="1738731903826" duration="7061000" />
+      <updated>1738077841915</updated>
+      <workItem from="1738077842969" duration="8464000" />
+      <workItem from="1738128973366" duration="10000" />
+      <workItem from="1738128997750" duration="2843000" />
+      <workItem from="1738137316051" duration="970000" />
+      <workItem from="1738139437071" duration="7345000" />
+      <workItem from="1738754742085" duration="31000" />
     </task>
-    <task id="LOCAL-00001" summary="start of mine">
+    <task id="LOCAL-00001" summary="added DoctorEnum">
       <option name="closed" value="true" />
-      <created>1738059329729</created>
+      <created>1738129044864</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1738059329729</updated>
+      <updated>1738129044864</updated>
     </task>
-    <task id="LOCAL-00002" summary="start of mine">
+    <task id="LOCAL-00002" summary="added SymptomsEnum">
       <option name="closed" value="true" />
-      <created>1738059335532</created>
+      <created>1738137984474</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1738059335532</updated>
+      <updated>1738137984475</updated>
     </task>
-    <task id="LOCAL-00003" summary="added new class User.java">
-      <option name="closed" value="true" />
-      <created>1738071557603</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1738071557603</updated>
-    </task>
-    <task id="LOCAL-00004" summary="added new class User.java">
-      <option name="closed" value="true" />
-      <created>1738071679276</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1738071679276</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fixed the Doctor.java class">
-      <option name="closed" value="true" />
-      <created>1738131080003</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1738131080003</updated>
-    </task>
-    <task id="LOCAL-00006" summary="&#10;&#10;fixed the Doctor.java class">
-      <option name="closed" value="true" />
-      <created>1738132901431</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1738132901431</updated>
-    </task>
-    <task id="LOCAL-00007" summary="&#10;&#10;fixed the Doctor.java class">
-      <option name="closed" value="true" />
-      <created>1738132938545</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1738132938545</updated>
-    </task>
-    <task id="LOCAL-00008" summary="database connected">
-      <option name="closed" value="true" />
-      <created>1738135445885</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1738135445886</updated>
-    </task>
-    <task id="LOCAL-00009" summary="database connected">
-      <option name="closed" value="true" />
-      <created>1738135457116</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1738135457116</updated>
-    </task>
-    <task id="LOCAL-00010" summary="database connected">
-      <option name="closed" value="true" />
-      <created>1738135591824</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1738135591824</updated>
-    </task>
-    <task id="LOCAL-00011" summary="database connected">
-      <option name="closed" value="true" />
-      <created>1738135753902</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1738135753902</updated>
-    </task>
-    <task id="LOCAL-00012" summary="database connected">
-      <option name="closed" value="true" />
-      <created>1738136037028</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1738136037028</updated>
-    </task>
-    <task id="LOCAL-00013" summary="database connected">
-      <option name="closed" value="true" />
-      <created>1738136346046</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1738136346046</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Update">
-      <option name="closed" value="true" />
-      <created>1738171639120</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1738171639120</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Update">
-      <option name="closed" value="true" />
-      <created>1738171656131</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1738171656131</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Update">
-      <option name="closed" value="true" />
-      <created>1738172603731</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1738172603731</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Update">
-      <option name="closed" value="true" />
-      <created>1738172673525</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1738172673525</updated>
-    </task>
-    <task id="LOCAL-00018" summary="deleted enums connected db main">
-      <option name="closed" value="true" />
-      <created>1738506071184</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1738506071184</updated>
-    </task>
-    <task id="LOCAL-00019" summary="deleted enums connected db main">
-      <option name="closed" value="true" />
-      <created>1738506081819</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1738506081819</updated>
-    </task>
-    <task id="LOCAL-00020" summary="well did smth">
-      <option name="closed" value="true" />
-      <created>1738512445846</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1738512445846</updated>
-    </task>
-    <task id="LOCAL-00021" summary="well did smth">
-      <option name="closed" value="true" />
-      <created>1738512452105</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1738512452105</updated>
-    </task>
-    <task id="LOCAL-00022" summary="well did smth">
-      <option name="closed" value="true" />
-      <created>1738738877208</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1738738877208</updated>
-    </task>
-    <task id="LOCAL-00023" summary="well did smth">
-      <option name="closed" value="true" />
-      <created>1738738904920</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1738738904920</updated>
-    </task>
-    <task id="LOCAL-00024" summary="well did smth">
-      <option name="closed" value="true" />
-      <created>1738739211210</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1738739211210</updated>
-    </task>
-    <task id="LOCAL-00025" summary="well did smth">
-      <option name="closed" value="true" />
-      <created>1738739225995</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1738739225995</updated>
-    </task>
-    <task id="LOCAL-00026" summary="well did smth">
-      <option name="closed" value="true" />
-      <created>1738739603093</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1738739603093</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,18 +119,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="start of mine" />
-    <MESSAGE value="added new class Doctor.java" />
-    <MESSAGE value="added new class User.java" />
-    <MESSAGE value="fixed the Doctor.java class" />
-    <MESSAGE value="Merge pull request #8 from A4-ho/fixingDoctor&#10;&#10;fixed the Doctor.java class" />
-    <MESSAGE value="&#10;&#10;fixed the Doctor.java class" />
-    <MESSAGE value="database connected" />
-    <MESSAGE value="Update README.md" />
-    <MESSAGE value="Update" />
-    <MESSAGE value="Merge branch 'main' of https://github.com/A4-ho/HospitalSystem" />
-    <MESSAGE value="deleted enums connected db main" />
-    <MESSAGE value="well did smth" />
-    <option name="LAST_COMMIT_MESSAGE" value="well did smth" />
+    <MESSAGE value="added DoctorEnum" />
+    <MESSAGE value="added SymptomsEnum" />
+    <option name="LAST_COMMIT_MESSAGE" value="added SymptomsEnum" />
   </component>
 </project>

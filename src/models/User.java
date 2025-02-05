@@ -1,7 +1,7 @@
 package src.models;
 
 
-public abstract class User {
+public class User {
     private int id;
     private String name;
     private String surname;
@@ -9,7 +9,7 @@ public abstract class User {
     private String password;
     private String role;
 
-    public User(int id, String name, String surname, String email, String password ,String role) {
+    public User(int id, String name, String surname, String email, String password , String role, int age) {
         this.id = id;
         this.name = name;
         this.surname = surname;
