@@ -78,6 +78,14 @@ public class PatientRepository implements IPatientRepository {
     ///  Not implemented
     @Override
     public boolean delete(int patientId) {
+        String sql = "DELETE FROM patient WHERE id = " + patientId;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Ошибка при удалении пациента: " + e.getMessage());
+        }
         return false;
     }
 }

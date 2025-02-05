@@ -93,7 +93,7 @@
                 stmt.executeUpdate();
                 return true;
             } catch (SQLException e) {
-                System.err.println("Ошибка при добавлении доктора: " + e.getMessage());
+                System.err.println("Ошибка при удалении доктора: " + e.getMessage());
             }
             return false;
         }
