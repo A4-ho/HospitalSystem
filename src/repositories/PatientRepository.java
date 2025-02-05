@@ -17,15 +17,20 @@ public class PatientRepository implements IPatientRepository {
 
     @Override
     public boolean create(Patient patient) {
-        String sql = "INSERT INTO patient VALUES (?, ?)";
+        String sql = "INSERT INTO patient (id, name, surname, email, password, role) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setInt(2, patient.getDoctorId());
+            stmt.setInt(1, patient.getId());
+            stmt.setString(2, patient.getName());
+            stmt.setString(3, patient.getSurname());
+            stmt.setString(4, patient.getEmail());
+            stmt.setString(5, patient.getPassword());
+            stmt.setString(6, patient.getRole());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ошибка при добавлении пациента: " + e.getMessage());
         }
         return false;
     }
