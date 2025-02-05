@@ -12,7 +12,7 @@ public class HospitalSystem {
 
     public static void main(String[] args) {
         // Create database connection using correct credentials
-        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "admin");
+        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "11qwertyuiop");
         Connection connection = db.getConnection();
 
         if (connection != null) {
@@ -24,8 +24,8 @@ public class HospitalSystem {
             while (true) {
                 System.out.println("\n=== Hospital Management System ===");
                 System.out.println("1. Add Doctor");
-                System.out.println("2. List All Doctors");
-                System.out.println("3. Add Patient");
+                System.out.println("2. Add Patient");
+                System.out.println("3. List All Doctors");
                 System.out.println("4. List All Patients");
                 System.out.println("5. Exit");
                 System.out.print("Choose an option: ");
