@@ -34,7 +34,9 @@ public class HospitalSystem {
                 System.out.println("2. Add Patient");
                 System.out.println("3. List All Doctors");
                 System.out.println("4. List All Patients");
-                System.out.println("5. Exit");
+                System.out.println("5. Delete Doctor");
+                System.out.println("6. Delete Patient");
+                System.out.println("7. Exit");
                 System.out.print("Choose an option: ");
                 String choice = scanner.nextLine();
 
@@ -43,7 +45,7 @@ public class HospitalSystem {
                     case "2" -> addPatient(patientController);
                     case "3" -> listAllDoctors(doctorController);
                     case "4" -> listAllPatients(patientController);
-                    case "5" -> {
+                    case "7" -> {
                         System.out.println("Exiting system...");
                         db.close();
                         return;
@@ -98,6 +100,22 @@ public class HospitalSystem {
     private static void listAllPatients(IPatientController patientController) {
         System.out.println("\n--- List of Patients ---");
         String result = patientController.getAllPatients();
+        System.out.println(result);
+    }
+
+    private static void deleteDoctor(IDoctorController doctorController) {
+        listAllDoctors(doctorController);
+        System.out.print("Enter doctor's id for deleting: ");
+        int id = scanner.nextInt();
+        String result = doctorController.deleteDoctor(id);
+        System.out.println(result);
+    }
+
+    private static void deletePatient(IPatientController patientController) {
+        listAllPatients(patientController);
+        System.out.print("Enter patient's id for deleting: ");
+        int id = scanner.nextInt();
+        String result = patientController.deletePatient(id);
         System.out.println(result);
     }
 }
