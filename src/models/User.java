@@ -2,13 +2,13 @@ package src.models;
 
 
 public class User {
-    private int id;
-    private String name;
-    private String surname;
-    private String email;
-    private String password;
-    private String role;
-    private int age;
+    protected int id;
+    protected String name;
+    protected String surname;
+    protected String email;
+    protected String password;
+    protected String role;
+    protected int age;
 
     public User(String name, String surname, String email, String password, String role ){
         this.name = name;
