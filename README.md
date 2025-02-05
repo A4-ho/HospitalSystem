@@ -1,67 +1,105 @@
-Hospital Management System
+# Hospital Management System
 
-📌 Project Overview
+A simple Java-based application for managing a hospital's database, including doctors and patients records. This project demonstrates the use of JDBC for database operations, object-oriented programming principles, and a basic command-line interface.
 
-The Hospital Management System is a comprehensive software solution designed to streamline hospital operations and enhance patient care. This system efficiently manages appointments, patient records, and staff information, ensuring a more organized and effective healthcare environment.
+---
 
-✨ Features
+## Features
 
-✔ Patient Management – Record and manage patient details, including medical history and personal information.✔ Doctor Management – Maintain doctor profiles, schedules, and specializations.✔ Appointment Scheduling – Seamlessly schedule, update, and cancel appointments.✔ User Authentication – Secure login for hospital staff to ensure data privacy.
+- Add doctors with names, specializations, and email credentials.
+- Add patients with names and contact details.
+- View lists of all doctors and patients.
+- Clear the database records (interactive confirmation included).
+- Support for PostgreSQL database connection.
 
-🛠 Technologies Used
+---
 
-Backend: Java (JDBC)
+## Technologies Used
 
-Database: PostgreSQL
+- **Java**: For backend logic.
+- **JDBC**: For database connectivity.
+- **PostgreSQL**: Relational database for data storage.
 
-Development Tools: pgAdmin, IntelliJ IDEA
+---
 
-Build Tool: Maven
+## Prerequisites
 
-Version Control: Git
+1. **Java SDK**: Ensure you have Java 17+ installed.
+2. **PostgreSQL**: Install and set up PostgreSQL database.
+3. **IDE**: (Optional) Use an IDE like IntelliJ IDEA for easier development and debugging.
 
-🚀 Installation & Setup
+---
 
-1️⃣ Clone the Repository
+## Configuration
 
- git clone https://github.com/A4-ho/HospitalSystem.git
+Before running the program, ensure you configure the database credentials correctly.
 
-2️⃣ Import the Project
+1. Update the following values in the file where `DatabaseConnection` is instantiated:
+   ```java
+   DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "admin");
+   ```
+   Replace:
+   - `localhost`: Hostname of your PostgreSQL server.
+   - `5432`: Port number of your PostgreSQL server.
+   - `postgres`: Database name.
+   - `postgres`: Username to access the database.
+   - `admin`: Password to access the database.
 
-Open the project in IntelliJ IDEA or any preferred IDE.
+2. Ensure PostgreSQL is running and the database schema is set up. You may execute the following SQL to create example tables:
+   ```sql
+   CREATE TABLE doctors (
+       id SERIAL PRIMARY KEY,
+       name VARCHAR(50),
+       surname VARCHAR(50),
+       specialization VARCHAR(100),
+       email VARCHAR(100),
+       password VARCHAR(255)
+   );
 
-3️⃣ Database Configuration
+   CREATE TABLE patients (
+       id SERIAL PRIMARY KEY,
+       name VARCHAR(50),
+       surname VARCHAR(50),
+       email VARCHAR(100),
+       password VARCHAR(255)
+   );
+   ```
 
-Install PostgreSQL and create a database (e.g., hospital_db).
+---
 
-Update the connection details in DatabaseConnection.java:
+## How to Run
 
-private static final String URL = "jdbc:postgresql://localhost:5432/hospital_db";
-private static final String USER = "your_username";
-private static final String PASSWORD = "your_password";
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/hospital-management-system.git
+   ```
+   
+2. Navigate to the project folder:
+   ```bash
+   cd hospital-management-system
+   ```
 
-4️⃣ Build the Project
+3. Compile and run the project:
+   ```bash
+   javac -d out src/**/*.java
+   java -cp out src.HospitalSystem
+   ```
 
-mvn clean install
+4. Interact with the menu displayed in the terminal.
 
-5️⃣ Run the Application
+---
 
-Execute MainApplication.java to start the system.
+## Menu Options
 
-📖 Usage
+### Main Menu
+You will be prompted with the following options in the terminal:
 
-1️⃣ Login as hospital staff using valid credentials.2️⃣ Manage patients and doctor records efficiently.3️⃣ Schedule or Cancel appointments as needed.4️⃣ Generate Reports to monitor hospital activities.
+1. **Add Doctor**: Enter details for a new doctor (name, surname, specialization, email, password).
+2. **Add Patient**: Enter details for a new patient (name, surname, email, password).
+3. **List All Doctors**: View all doctors in the database.
+4. **List All Patients**: View all patients in the database.
+5. **Clear Database**: Delete all records from the database (requires confirmation).
+6. **Exit**: Close the application safely.
 
-🤝 Contribution
+---
 
-Contributions are welcome! To contribute:
-
-Fork the repository.
-
-Make changes and ensure best coding practices.
-
-Submit a pull request for review.
-
-📜 License
-
-This project is licensed under the MIT License.
