@@ -5,20 +5,20 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class PatientRepository {
     private Connection connection;
 
+    public PatientRepository(Connection connection) {
+        this.connection = connection;
+    }
     public void addPatient(Patient patient) {
-        String sql = "INSERT INTO patient (name, surname, gender, email, age) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO patient (age,doctor_id) VALUES (?, ?)";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setString(1, patient.getName());
-            stmt.setString(2, patient.getSurname());
-            stmt.setString(3, patient.getGender());
-            stmt.setString(4, patient.getEmail());
-            stmt.setInt(5, patient.getAge());
+            stmt.setInt(1, patient.getAge());
+            stmt.setInt(2, patient.getDoctorId());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -30,8 +30,7 @@ public class PatientRepository {
         List<Patient> patients = new ArrayList<>();
         String sql = "SELECT * FROM patient";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             Statement stmt = conn.createStatement();
+        try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
@@ -39,9 +38,12 @@ public class PatientRepository {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("surname"),
-                        rs.getString("gender"),
                         rs.getString("email"),
-                        rs.getInt("age")
+                        rs.getString("password"),
+                        rs.getString("role"),
+                        rs.getInt("age"),
+                        rs.getInt("doctor_id")
+
                 ));
             }
         } catch (SQLException e) {

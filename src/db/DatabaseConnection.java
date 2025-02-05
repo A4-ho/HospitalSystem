@@ -17,6 +17,9 @@ public class DatabaseConnection implements IDB {
         this.database = database;
     }
 
+    public DatabaseConnection(int i, String postgres, String admin) {
+    }
+
     public String getHost() {
         return host;
     }
