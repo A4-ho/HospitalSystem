@@ -5,8 +5,7 @@ import java.sql.Connection;
 public class HospitalSystem {
     public static void main(String[] args) {
         // Create database connection using correct credentials
-        DatabaseConnection db = new DatabaseConnection(host, port, database, username, password);
-
+        DatabaseConnection db = new DatabaseConnection("your host", "your port", "your db", "your username", "your password");
         Connection connection = db.getConnection();
 
         if (connection != null) {
@@ -21,5 +20,8 @@ public class HospitalSystem {
         } else {
             System.out.println("❌ Connection failed!");
         }
+
+
+
     }
 }

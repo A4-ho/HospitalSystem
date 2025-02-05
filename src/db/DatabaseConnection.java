@@ -11,9 +11,9 @@ public class DatabaseConnection implements IDB {
     private int port;
     private Connection connection;
 
-    public DatabaseConnection(String host,int port, String database, String username, String password) {
+    public DatabaseConnection(String host, String port, String database, String username, String password) {
         this.host = host;
-        this.port = port;
+        this.port = Integer.parseInt(port);
         this.database = database;
         this.username = username;
         this.password = password;
@@ -46,6 +46,8 @@ public class DatabaseConnection implements IDB {
     public String getDatabase() {
         return database;
     }
+
+    public int getPort() { return  port; }
 
     public void setDatabase(String database) {
         this.database = database;
