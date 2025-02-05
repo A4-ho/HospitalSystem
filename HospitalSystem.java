@@ -15,7 +15,7 @@ public class HospitalSystem {
             UserRepository userRepo = new UserRepository(connection);
             System.out.println("Users in the system: " + userRepo.getAllUsers());
 
-            // Close the connection when done
+
             db.close();
         } else {
             System.out.println("❌ Connection failed!");
