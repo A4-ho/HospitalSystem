@@ -44,12 +44,36 @@
                             rs.getString("email"),
                             rs.getString("password"),
                             rs.getString("role"),
-                            rs.getInt("id"),
                             rs.getString("specialization")
                     ));
                 }
             } catch (SQLException e) {
                 System.err.println("Ошибка при получении списка докторов: " + e.getMessage());
+            }
+            return doctors;
+
+        }
+        public List<Doctor> findAvailableDoctorsBySpecialization(String specialization) {
+            String sql = "SELECT * FROM doctor WHERE specialization = ?";
+            List<Doctor> doctors = new ArrayList<>();
+
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, specialization);
+                ResultSet rs = statement.executeQuery();
+
+                while (rs.next()) {
+                    Doctor doctor = new Doctor(
+                            rs.getString("name"),
+                            rs.getInt("id"),
+                            rs.getString("surname"),
+                            rs.getString("gender"),
+                            rs.getString("email"),
+                            rs.getString("specialization")
+                    );
+                    doctors.add(doctor);
+                }
+            } catch (SQLException e) {
+                System.out.println("❌ Error fetching doctors: " + e.getMessage());
             }
             return doctors;
         }

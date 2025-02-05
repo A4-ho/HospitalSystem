@@ -13,11 +13,10 @@ public class PatientRepository {
         this.connection = connection;
     }
     public void addPatient(Patient patient) {
-        String sql = "INSERT INTO patient (age,doctor_id) VALUES (?, ?)";
+        String sql = "INSERT INTO patient VALUES (?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setInt(1, patient.getAge());
             stmt.setInt(2, patient.getDoctorId());
             stmt.executeUpdate();
 
@@ -35,14 +34,11 @@ public class PatientRepository {
 
             while (rs.next()) {
                 patients.add(new Patient(
-                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("surname"),
                         rs.getString("email"),
                         rs.getString("password"),
-                        rs.getString("role"),
-                        rs.getInt("age"),
-                        rs.getInt("doctor_id")
+                        rs.getString("role")
 
                 ));
             }
