@@ -1,3 +1,4 @@
+import src.controller.DoctorController;
 import src.db.DatabaseConnection;
 import src.models.Doctor;
 import src.models.Patient;
@@ -21,6 +22,8 @@ public class HospitalSystem {
             DoctorRepository doctorRepository = new DoctorRepository(connection);
             PatientRepository patientRepository = new PatientRepository(connection);
 
+            DoctorController doctorController = new DoctorController(doctorRepository);
+
             while (true) {
                 System.out.println("\n=== Hospital Management System ===");
                 System.out.println("1. Add Doctor");
@@ -32,9 +35,9 @@ public class HospitalSystem {
                 String choice = scanner.nextLine();
 
                 switch (choice) {
-                    case "1" -> addDoctor(doctorRepository);
+                    case "1" -> addDoctor(doctorController);
                     case "2" -> addPatient(patientRepository);
-                    case "3" -> listAllDoctors(doctorRepository);
+                    case "3" -> listAllDoctors(doctorController);
                     case "4" -> listAllPatients(patientRepository);
                     case "5" -> {
                         System.out.println("Exiting system...");
@@ -49,7 +52,7 @@ public class HospitalSystem {
         }
     }
 
-    private static void addDoctor(DoctorRepository doctorRepository) {
+    private static void addDoctor(DoctorController doctorController) {
         System.out.print("Enter Doctor's Name: ");
         String name = scanner.nextLine();
         System.out.print("Enter Doctor's Surname: ");
@@ -63,15 +66,14 @@ public class HospitalSystem {
 
         // Assuming 'id' is auto-incremented and role is predefined as 'doctor'
         Doctor doctor = new Doctor( name, surname, email, password, "doctor", specialization);
-        doctorRepository.addDoctor(doctor);
-        System.out.println("✅ Doctor added successfully.");
+        String result = doctorController.addDoctor(doctor);
+        System.out.println(result);
     }
 
-    private static void listAllDoctors(DoctorRepository doctorRepository) {
+    private static void listAllDoctors(DoctorController doctorController) {
         System.out.println("\n--- List of Doctors ---");
-        for (Doctor doctor : doctorRepository.getAllDoctors()) {
-            System.out.println(doctor);
-        }
+        String result = doctorController.getAllDoctors();
+        System.out.println(result);
     }
 
     private static void addPatient(PatientRepository patientRepository) {

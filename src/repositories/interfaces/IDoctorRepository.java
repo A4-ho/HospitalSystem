@@ -5,9 +5,25 @@ import java.util.List;
 
 public interface IDoctorRepository extends CrudRepository<Doctor> {
     List<Doctor> getBySpecialization(String specialization);
-    boolean createDoctor(Doctor doctor);
-    Doctor getDoctorById(int id);
-    List<Doctor> getAllDoctors();
-    boolean updateDoctorRole(int id, String role);
-    boolean deleteDoctor(int id);
+
+    /// Create interface
+    @Override
+    boolean create(Doctor doctor);
+
+    /// Read interface
+    @Override
+    Doctor getById(int doctorId);
+
+    @Override
+    List<Doctor> getAll();
+
+    /// Update interface
+    @Override
+    boolean update(int doctorId, Doctor doctor);
+
+    boolean updateDoctorRole(int doctorId, String role);
+
+    /// Delete interface
+    @Override
+    boolean delete(int doctorId);
 }

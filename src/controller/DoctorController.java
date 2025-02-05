@@ -17,20 +17,20 @@ public class DoctorController implements IDoctorController {
 
 
     @Override
-    public String createDoctor(Doctor doctor) {
-        boolean created = repository.createDoctor(doctor);
-        return created?"Doctor Created":"Doctor Not Created";
+    public String addDoctor(Doctor doctor) {
+        boolean created = repository.create(doctor);
+        return created?"✅ Doctor added successfully.":"Doctor Not Created";
     }
 
     @Override
     public String getDoctorById(int Id) {
-        Doctor doctor = repository.getDoctorById(Id);
+        Doctor doctor = repository.getById(Id);
         return doctor!=null?"Doctor Found":"Doctor Not Found";
     }
 
     @Override
     public String getAllDoctors() {
-        List<Doctor> doctors = repository.getAllDoctors();
+        List<Doctor> doctors = repository.getAll();
         return doctors.isEmpty() ? "No doctors found. " : doctors.toString();
     }
 
@@ -42,7 +42,7 @@ public class DoctorController implements IDoctorController {
 
     @Override
     public String deleteDoctor(int id) {
-        boolean deleted = repository.deleteDoctor(id);
+        boolean deleted = repository.delete(id);
         return deleted ? "Doctor deleted successfully!" : "Failed to delete doctor";
     }
 }

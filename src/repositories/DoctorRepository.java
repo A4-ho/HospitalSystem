@@ -1,11 +1,13 @@
     package src.repositories;
 
     import src.models.Doctor;
+    import src.repositories.interfaces.IDoctorRepository;
+
     import java.sql.*;
     import java.util.ArrayList;
     import java.util.List;
 
-    public class DoctorRepository {
+    public class DoctorRepository implements IDoctorRepository {
 
         private final Connection connection;
 
@@ -13,7 +15,15 @@
             this.connection = connection;
         }
 
-        public void addDoctor(Doctor doctor) {
+        /// Not implemented
+        @Override
+        public List<Doctor> getBySpecialization(String specialization) {
+            return List.of();
+        }
+
+        /// Create Doctor
+        @Override
+        public boolean create(Doctor doctor) {
             String sql = "INSERT INTO doctor (id, name, surname, email, specialization, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -25,12 +35,21 @@
                 stmt.setString(6, doctor.getPassword());
                 stmt.setString(7, doctor.getRole());
                 stmt.executeUpdate();
+                return true;
             } catch (SQLException e) {
                 System.err.println("Ошибка при добавлении доктора: " + e.getMessage());
             }
+            return false;
         }
 
-        public List<Doctor> getAllDoctors() {
+        /// Not implemented now
+        @Override
+        public Doctor getById(int id) {
+            return null;
+        }
+
+        @Override
+        public List<Doctor> getAll() {
             List<Doctor> doctors = new ArrayList<>();
             String sql = "SELECT * FROM doctor";
 
@@ -52,4 +71,23 @@
             }
             return doctors;
         }
+
+        /// Not implemented now
+        @Override
+        public boolean update(int doctorId, Doctor doctor) {
+            return false;
+        }
+
+        /// Not implemented now
+        @Override
+        public boolean updateDoctorRole(int doctorId, String role) {
+            return false;
+        }
+
+        /// Not implemented now
+        @Override
+        public boolean delete(int doctorId) {
+            return false;
+        }
+
     }
