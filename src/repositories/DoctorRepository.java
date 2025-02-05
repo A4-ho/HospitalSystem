@@ -7,16 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorRepository {
+
     private Connection connection;
-public DoctorRepository(Connection connection) {
-    this.connection=connection;
+
+    public DoctorRepository(Connection connection) {
+        this.connection=connection;
 }
 
     public void addDoctor(Doctor doctor) {
         String sql = "INSERT INTO doctor (name, surname, gender, email, specialization) VALUES (?, ?, ?, ?, ?)";
-        try (
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
 
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, doctor.getName());
             stmt.setString(2, doctor.getSurname());
             stmt.setString(3, doctor.getGender());

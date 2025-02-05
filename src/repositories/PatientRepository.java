@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatientRepository {
+    private Connection connection;
 
     public void addPatient(Patient patient) {
         String sql = "INSERT INTO patient (name, surname, gender, email, age) VALUES (?, ?, ?, ?, ?)";
