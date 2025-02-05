@@ -1,7 +1,12 @@
 package src.controller.interfaces;
 
+import src.models.Patient;
+
 public interface IPatientController {
-    void registerPatient(String name, String surname, String email, String password, int age, int doctorId);
-    void displayAllPatients();
-    // Add additional patient-related operations if needed.
+    String createPatient(Patient patient);
+    String getPatientById(int id);
+    String getAllPatients();
+    String updatePatientRole(int id,String newRole);
+    String deletePatient(int id);
+
 }

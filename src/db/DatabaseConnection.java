@@ -8,13 +8,15 @@ public class DatabaseConnection implements IDB {
     private String username;
     private String password;
     private String database;
+    private int port;
     private Connection connection;
 
-    public DatabaseConnection(String host, String username, String password, String database) {
+    public DatabaseConnection(String host,int port, String database, String username, String password) {
         this.host = host;
+        this.port = port;
+        this.database = database;
         this.username = username;
         this.password = password;
-        this.database = database;
     }
 
     public String getHost() {
@@ -51,12 +53,15 @@ public class DatabaseConnection implements IDB {
 
     @Override
     public Connection getConnection() {
-        String url = "jdbc:postgresql://" + host + ":5432/" + database;
+        // Construct the URL correctly without redundancy
+        String url = "jdbc:postgresql://" + host + ":" + port + "/" + database; // Ensure the correct URL format
         try {
             if (connection != null && !connection.isClosed()) {
                 return connection;
             }
+            // Load PostgreSQL driver
             Class.forName("org.postgresql.Driver");
+            // Establish connection
             connection = DriverManager.getConnection(url, username, password);
             return connection;
         } catch (Exception e) {
@@ -64,6 +69,7 @@ public class DatabaseConnection implements IDB {
         }
         return null;
     }
+
 
     @Override
     public void close() {

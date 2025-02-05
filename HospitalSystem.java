@@ -4,13 +4,9 @@ import java.sql.Connection;
 
 public class HospitalSystem {
     public static void main(String[] args) {
-        // Database credentials
-        String host = "jdbc:postgresql://localhost:5432/HospitalSystem"; // Correct host URL
-        String username = "postgres"; // Your PostgreSQL username
-        String password = "admin";   // Your PostgreSQL password
+        // Create database connection using correct credentials
+        DatabaseConnection db = new DatabaseConnection(host, port, database, username, password);
 
-        // Create database connection
-        DatabaseConnection db = new DatabaseConnection(5432,postgres,admin);
         Connection connection = db.getConnection();
 
         if (connection != null) {
