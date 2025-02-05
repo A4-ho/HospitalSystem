@@ -87,6 +87,14 @@
         /// Not implemented now
         @Override
         public boolean delete(int doctorId) {
+            String sql = "DELETE FROM doctor WHERE id = " + doctorId;
+
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.executeUpdate();
+                return true;
+            } catch (SQLException e) {
+                System.err.println("Ошибка при добавлении доктора: " + e.getMessage());
+            }
             return false;
         }
 

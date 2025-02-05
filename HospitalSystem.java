@@ -45,6 +45,8 @@ public class HospitalSystem {
                     case "2" -> addPatient(patientController);
                     case "3" -> listAllDoctors(doctorController);
                     case "4" -> listAllPatients(patientController);
+                    case "5" -> deleteDoctor(doctorController);
+                    case "6" -> deletePatient(patientController);
                     case "7" -> {
                         System.out.println("Exiting system...");
                         db.close();
