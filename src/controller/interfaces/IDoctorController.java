@@ -1,7 +1,11 @@
 package src.controller.interfaces;
 
+import src.models.Doctor;
+
 public interface IDoctorController {
-    void registerDoctor(String name, String surname, String email, String password, String specialization);
-    void displayAllDoctors();
-    // Add additional doctor-related operations if needed.
+    String createDoctor(Doctor doctor);
+    String getDoctorById(int id);
+    String getAllDoctors();
+    String updateDoctorRole(int id, String newRole);
+    String deleteDoctor(int id);
 }
