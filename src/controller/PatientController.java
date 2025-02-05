@@ -17,32 +17,32 @@ public class PatientController implements IPatientController {
 
 
     @Override
-    public String createPatient(Patient patient) {
-        boolean created = repository.createPatient(patient);
-        return created?"Patient Created":"Patient Not Created";
+    public String addPatient(Patient patient) {
+        boolean created = repository.create(patient);
+        return created?"✅ Patient added successfully.":"Patient Not Created";
     }
 
     @Override
     public String getPatientById(int id) {
-        Doctor doctor = repository.getPatientById(id);
-        return doctor!=null?"Patient Found":"Patient Not Found";
+        Patient patient = repository.getById(id);
+        return patient!=null?"Patient Found":"Patient Not Found";
     }
 
     @Override
     public String getAllPatients() {
-        List<Patient> patients = repository.getAllPatients();
+        List<Patient> patients = repository.getAll();
         return patients.isEmpty() ? "No patients found. " : patients.toString();
     }
 
     @Override
     public String updatePatientRole(int id,String newRole) {
-        boolean updated = repository.updatePatientRole(id, newRole);
+        boolean updated = repository.updateRole(id, newRole);
         return updated ? "Patient role updated successfully!" : "Failed to update patient role";
     }
 
     @Override
     public String deletePatient(int id) {
-        boolean deleted = repository.deletePatient(id);
+        boolean deleted = repository.delete(id);
         return deleted ? "Patient deleted successfully!" : "Failed to delete doctor";
     }
 }

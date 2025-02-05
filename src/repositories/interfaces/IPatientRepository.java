@@ -6,16 +6,10 @@ import src.models.Patient;
 import java.util.List;
 
 public interface IPatientRepository extends CrudRepository<Patient> {
-    @Override
-    Patient getById(int id);
-
-    boolean createPatient(Patient patient);
-
-    Doctor getPatientById(Object id);
-
-    List<Patient> getAllPatients();
-
-    boolean deletePatient(int id);
-
-    boolean updatePatientRole(Object id, Object newRole);
+    boolean create(Patient patient);
+    Patient getById(int patientId);
+    List<Patient> getAll();
+    boolean update(int patientId, Patient patient);
+    boolean updateRole(int patientId, String newRole);
+    boolean delete(int patientId);
 }

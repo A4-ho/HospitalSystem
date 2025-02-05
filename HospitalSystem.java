@@ -1,4 +1,7 @@
 import src.controller.DoctorController;
+import src.controller.PatientController;
+import src.controller.interfaces.IDoctorController;
+import src.controller.interfaces.IPatientController;
 import src.db.DatabaseConnection;
 import src.models.Doctor;
 import src.models.Patient;
@@ -23,6 +26,7 @@ public class HospitalSystem {
             PatientRepository patientRepository = new PatientRepository(connection);
 
             DoctorController doctorController = new DoctorController(doctorRepository);
+            PatientController patientController = new PatientController(patientRepository);
 
             while (true) {
                 System.out.println("\n=== Hospital Management System ===");
@@ -36,9 +40,9 @@ public class HospitalSystem {
 
                 switch (choice) {
                     case "1" -> addDoctor(doctorController);
-                    case "2" -> addPatient(patientRepository);
+                    case "2" -> addPatient(patientController);
                     case "3" -> listAllDoctors(doctorController);
-                    case "4" -> listAllPatients(patientRepository);
+                    case "4" -> listAllPatients(patientController);
                     case "5" -> {
                         System.out.println("Exiting system...");
                         db.close();
@@ -52,7 +56,7 @@ public class HospitalSystem {
         }
     }
 
-    private static void addDoctor(DoctorController doctorController) {
+    private static void addDoctor(IDoctorController doctorController) {
         System.out.print("Enter Doctor's Name: ");
         String name = scanner.nextLine();
         System.out.print("Enter Doctor's Surname: ");
@@ -70,13 +74,13 @@ public class HospitalSystem {
         System.out.println(result);
     }
 
-    private static void listAllDoctors(DoctorController doctorController) {
+    private static void listAllDoctors(IDoctorController doctorController) {
         System.out.println("\n--- List of Doctors ---");
         String result = doctorController.getAllDoctors();
         System.out.println(result);
     }
 
-    private static void addPatient(PatientRepository patientRepository) {
+    private static void addPatient(IPatientController patientController) {
         System.out.print("Enter Patient's Name: ");
         String name = scanner.nextLine();
         System.out.print("Enter Patient's Surname: ");
@@ -85,18 +89,15 @@ public class HospitalSystem {
         String email = scanner.nextLine();
         System.out.print("Enter Patient's Password: ");
         String password = scanner.nextLine();
-        System.out.print("Enter Patient's Role: ");
-        String role = scanner.nextLine();
         scanner.nextLine();
-        Patient patient = new Patient( name, surname, email,password,role);
-        patientRepository.addPatient(patient);
-        System.out.println("✅ Patient added successfully.");
+        Patient patient = new Patient( name, surname, email,password, "patient");
+        String result = patientController.addPatient(patient);
+        System.out.println(result);
     }
 
-    private static void listAllPatients(PatientRepository patientRepository) {
+    private static void listAllPatients(IPatientController patientController) {
         System.out.println("\n--- List of Patients ---");
-        for (Patient patient : patientRepository.getAllPatients()) {
-            System.out.println(patient);
-        }
+        String result = patientController.getAllPatients();
+        System.out.println(result);
     }
 }
