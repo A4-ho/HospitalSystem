@@ -13,13 +13,18 @@ public class PatientRepository {
         this.connection = connection;
     }
     public void addPatient(Patient patient) {
-        String sql = "INSERT INTO patient VALUES (?, ?)";
+        String sql = "INSERT INTO patient (name, surname, email, password, role) VALUES (?,?,?,?,?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, patient.getName());
+            stmt.setString(2, patient.getSurname());
+            stmt.setString(3, patient.getEmail());
+            stmt.setString(4, patient.getPassword());
+            stmt.setString(5, patient.getRole());
 
-            stmt.setInt(2, patient.getDoctorId());
+            System.out.println("Добавление пациента: " + patient.getName() + " " + patient.getSurname());
             stmt.executeUpdate();
-
+            System.out.println("✅ Пациент успешно добавлен!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

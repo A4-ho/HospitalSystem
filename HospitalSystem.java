@@ -24,8 +24,8 @@ public class HospitalSystem {
             while (true) {
                 System.out.println("\n=== Hospital Management System ===");
                 System.out.println("1. Add Doctor");
-                System.out.println("2. List All Doctors");
-                System.out.println("3. Add Patient");
+                System.out.println("2. Add Patient");
+                System.out.println("3. List All Doctors");
                 System.out.println("4. List All Patients");
                 System.out.println("5. Exit");
                 System.out.print("Choose an option: ");
@@ -41,7 +41,7 @@ public class HospitalSystem {
                         db.close();
                         return;
                     }
-                    default -> System.out.println("Invalid option. Please try again.");
+                    default -> System.out.println("❌ Invalid option. Please try again.");
                 }
             }
         } else {
@@ -61,8 +61,7 @@ public class HospitalSystem {
         System.out.print("Enter Doctor's Password: ");
         String password = scanner.nextLine();
 
-        // Assuming 'id' is auto-incremented and role is predefined as 'doctor'
-        Doctor doctor = new Doctor( name, surname, email, password, "doctor", specialization);
+        Doctor doctor = new Doctor(name, surname, email, password, "doctor", specialization);
         doctorRepository.addDoctor(doctor);
         System.out.println("✅ Doctor added successfully.");
     }
@@ -70,7 +69,8 @@ public class HospitalSystem {
     private static void listAllDoctors(DoctorRepository doctorRepository) {
         System.out.println("\n--- List of Doctors ---");
         for (Doctor doctor : doctorRepository.getAllDoctors()) {
-            System.out.println(doctor);
+            System.out.printf("Name: %s | Surname %s | Specialization: %s | Email: %s%n",
+                    doctor.getName(), doctor.getSurname(), doctor.getSpecialization(), doctor.getEmail());
         }
     }
 
@@ -83,10 +83,8 @@ public class HospitalSystem {
         String email = scanner.nextLine();
         System.out.print("Enter Patient's Password: ");
         String password = scanner.nextLine();
-        System.out.print("Enter Patient's Role: ");
-        String role = scanner.nextLine();
-        scanner.nextLine();
-        Patient patient = new Patient( name, surname, email,password,role);
+
+        Patient patient = new Patient(name, surname, email, password, "patient");
         patientRepository.addPatient(patient);
         System.out.println("✅ Patient added successfully.");
     }
@@ -94,7 +92,8 @@ public class HospitalSystem {
     private static void listAllPatients(PatientRepository patientRepository) {
         System.out.println("\n--- List of Patients ---");
         for (Patient patient : patientRepository.getAllPatients()) {
-            System.out.println(patient);
+            System.out.printf( "Name: %s | Surname: %s | Email: %s%n",
+                    patient.getName(), patient.getSurname(), patient.getEmail());
         }
     }
 }

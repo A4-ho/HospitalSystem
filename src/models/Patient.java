@@ -6,9 +6,6 @@ public class Patient extends src.models.User {
 
     public Patient(String name, String surname, String email, String password, String role) {
         super(name, surname , email, password,role);
-        this.doctorId = doctorId;
-    }
-    public int getDoctorId() { return doctorId; }
-}
+}}
 
 
