@@ -33,14 +33,11 @@ public class UserRepository {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new User(
-                        rs.getInt("id"),
                         rs.getString("email"),
                         rs.getString("password"),
                         rs.getString("role"),
                         rs.getString("name"),
-                        rs.getString("surname"),
-                        rs.getInt("age")  // Убедитесь, что поле age существует в таблице
-                        // Убедитесь, что поле doctor_id существует в таблице
+                        rs.getString("surname")
                 );
             }
         } catch (SQLException e) {
@@ -56,14 +53,11 @@ public class UserRepository {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 users.add(new User(
-                        rs.getInt("id"),
                         rs.getString("email"),
                         rs.getString("password"),
                         rs.getString("role"),
                         rs.getString("name"),
-                        rs.getString("surname"),
-                        rs.getInt("age") // Убедитесь, что поле age существует в таблице
-                        // Убедитесь, что поле doctor_id существует в таблице
+                        rs.getString("surname")
                 ));
             }
         } catch (SQLException e) {

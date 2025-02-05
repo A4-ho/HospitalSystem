@@ -44,7 +44,6 @@
                             rs.getString("email"),
                             rs.getString("password"),
                             rs.getString("role"),
-                            rs.getInt("id"),
                             rs.getString("specialization")
                     ));
                 }
