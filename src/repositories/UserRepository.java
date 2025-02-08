@@ -33,6 +33,7 @@ public class UserRepository {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new User(
+                        rs.getInt("id"),
                         rs.getString("email"),
                         rs.getString("password"),
                         rs.getString("role"),
@@ -53,6 +54,7 @@ public class UserRepository {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 users.add(new User(
+                        rs.getInt("id"),
                         rs.getString("email"),
                         rs.getString("password"),
                         rs.getString("role"),

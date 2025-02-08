@@ -39,6 +39,7 @@
 
                 while (rs.next()) {
                     doctors.add(new Doctor(
+                            rs.getInt("id"),
                             rs.getString("name"),
                             rs.getString("surname"),
                             rs.getString("email"),
@@ -66,8 +67,9 @@
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getString("surname"),
-                            rs.getString("gender"),
                             rs.getString("email"),
+                            rs.getString("password"),
+                            rs.getString("role"),
                             rs.getString("specialization")
                     );
                     doctors.add(doctor);

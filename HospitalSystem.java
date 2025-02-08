@@ -23,31 +23,32 @@ public class HospitalSystem {
 
             DoctorRepository doctorRepository = new DoctorRepository(connection);
             PatientRepository patientRepository = new PatientRepository(connection);
-            AppointmentRepository apointmentsRepository = new AppointmentRepository(connection);
+            AppointmentRepository apointmentRepository = new AppointmentRepository(connection);
 
             while (true) {
-                System.out.println("\n=== Hospital Management System ===");
-                System.out.println("1. Add Doctor");
-                System.out.println("2. List All Doctors");
-                System.out.println("3. Add Patient");
-                System.out.println("4. List All Patients");
-                System.out.println("5. Book an Appointment");
-                System.out.println("6. Exit");
-                System.out.print("Choose an option: ");
+                System.out.println("\n=== 🏥 Hospital Management System ===");
+                System.out.println("1. ➕ Add Doctor");
+                System.out.println("2. ➕ Add Patient");
+                System.out.println("3. 📋 List All Doctors");
+                System.out.println("4. 📋 List All Patients");
+                System.out.println("5. 📅 Book an Appointment");
+                System.out.println("6. ❌ Exit");
+                System.out.print("🔹 Choose an option: ");
+
                 String choice = scanner.nextLine();
 
                 switch (choice) {
                     case "1" -> addDoctor(doctorRepository);
-                    case "2" -> listAllDoctors(doctorRepository);
-                    case "3" -> addPatient(patientRepository);
+                    case "2" -> addPatient(patientRepository);
+                    case "3" -> listAllDoctors(doctorRepository);
                     case "4" -> listAllPatients(patientRepository);
-                    case "5" -> bookAppointment(doctorRepository,  apointmentsRepository);
+                    case "5" -> bookAppointment(doctorRepository, apointmentRepository);
                     case "6" -> {
-                        System.out.println("Exiting system...");
+                        System.out.println("👋 Exiting system... Goodbye!");
                         db.close();
                         return;
                     }
-                    default -> System.out.println("Invalid option. Please try again.");
+                    default -> System.out.println("⚠️ Invalid option. Please try again.");
                 }
             }
         } else {
@@ -67,15 +68,20 @@ public class HospitalSystem {
         System.out.print("Enter Doctor's Password: ");
         String password = scanner.nextLine();
 
-        Doctor doctor = new Doctor(name, surname, email, password, "doctor", specialization);
+        Doctor doctor = new Doctor('0',name, surname, email, password, "doctor", specialization);
         doctorRepository.addDoctor(doctor);
         System.out.println("✅ Doctor added successfully.");
     }
 
     private static void listAllDoctors(DoctorRepository doctorRepository) {
-        System.out.println("\n--- List of Doctors ---");
-        for (Doctor doctor : doctorRepository.getAllDoctors()) {
-            System.out.println(doctor);
+        System.out.println("\n--- 👨‍⚕️ List of Doctors ---");
+        List<Doctor> doctors = doctorRepository.getAllDoctors();
+        if (doctors.isEmpty()) {
+            System.out.println("⚠️ No doctors found in the system.");
+        } else {
+            for (Doctor doctor : doctors) {
+                System.out.println(doctor);
+            }
         }
     }
 
@@ -91,19 +97,29 @@ public class HospitalSystem {
         System.out.print("Enter Patient's Role: ");
         String role = scanner.nextLine();
 
-        Patient patient = new Patient(name, surname, email, password, role);
+        // Creating a Patient with default ID (0) and doctorId (-1)
+        Patient patient = new Patient(0, name, surname, email, password, role, -1);
+
+        // Add patient to the repository (which will update the ID)
         patientRepository.addPatient(patient);
+
         System.out.println("✅ Patient added successfully.");
     }
 
+
     private static void listAllPatients(PatientRepository patientRepository) {
-        System.out.println("\n--- List of Patients ---");
-        for (Patient patient : patientRepository.getAllPatients()) {
-            System.out.println(patient);
+        System.out.println("\n--- 🏥 List of Patients ---");
+        List<Patient> patients = patientRepository.getAllPatients();
+        if (patients.isEmpty()) {
+            System.out.println("⚠️ No patients found in the system.");
+        } else {
+            for (Patient patient : patients) {
+                System.out.println(patient);
+            }
         }
     }
 
-    private static void bookAppointment(DoctorRepository doctorRepository, AppointmentRepository apointmentsRepository) {
+    private static void bookAppointment(DoctorRepository doctorRepository, AppointmentRepository appointmentRepository) {
         System.out.print("Enter the specialization of the doctor: ");
         String specialization = scanner.nextLine();
 
@@ -113,25 +129,54 @@ public class HospitalSystem {
             return;
         }
 
-        System.out.println("Available doctors:");
+        System.out.println("\n📋 Available doctors:");
         for (int i = 0; i < availableDoctors.size(); i++) {
             System.out.println((i + 1) + ". " + availableDoctors.get(i).getName() + " " + availableDoctors.get(i).getSurname());
         }
 
-        System.out.print("Select a doctor (by number): ");
-        int doctorChoice = Integer.parseInt(scanner.nextLine());
+        System.out.print("🔹 Select a doctor (by number): ");
+        int doctorChoice;
+        try {
+            doctorChoice = Integer.parseInt(scanner.nextLine());
+            if (doctorChoice < 1 || doctorChoice > availableDoctors.size()) {
+                System.out.println("⚠️ Invalid doctor selection.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("⚠️ Invalid input. Please enter a number.");
+            return;
+        }
+
         Doctor chosenDoctor = availableDoctors.get(doctorChoice - 1);
 
-        System.out.print("Enter appointment date (YYYY-MM-DD): ");
-        LocalDate date = LocalDate.parse(scanner.nextLine());
+        System.out.print("📅 Enter appointment date (YYYY-MM-DD): ");
+        LocalDate date;
+        try {
+            date = LocalDate.parse(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("⚠️ Invalid date format.");
+            return;
+        }
 
-        System.out.print("Enter appointment time (HH:MM): ");
-        LocalTime time = LocalTime.parse(scanner.nextLine());
+        System.out.print("⏰ Enter appointment time (HH:MM): ");
+        LocalTime time;
+        try {
+            time = LocalTime.parse(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("⚠️ Invalid time format.");
+            return;
+        }
 
-        System.out.print("Enter your patient ID: ");
-        int patientId = Integer.parseInt(scanner.nextLine());
+        System.out.print("🔹 Enter your patient ID: ");
+        int patientId;
+        try {
+            patientId = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("⚠️ Invalid patient ID.");
+            return;
+        }
 
-        apointmentsRepository.bookAppointment(patientId, chosenDoctor.getId(), date, time);
+        appointmentRepository.bookAppointment(patientId, chosenDoctor.getId(), date, time);
         System.out.println("✅ Appointment booked successfully!");
     }
 }

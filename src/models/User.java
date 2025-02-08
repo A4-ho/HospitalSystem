@@ -1,6 +1,5 @@
 package src.models;
 
-
 public class User {
     private int id;
     private String name;
@@ -8,9 +7,9 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private int age;
 
-    public User(String name, String surname, String email, String password, String role ){
+    public User(int id, String name, String surname, String email, String password, String role) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -20,6 +19,8 @@ public class User {
 
     // Getters & Setters
     public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
     public String getName() { return name; }
     public String getSurname() { return surname; }
     public String getEmail() { return email; }
@@ -34,7 +35,7 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
