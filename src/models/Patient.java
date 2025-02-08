@@ -1,6 +1,5 @@
 package src.models;
-
-public class Patient extends User {
+public class Patient extends src.models.User {
     private int doctorId; // Assigned doctor
 
     public Patient(int id, String name, String surname, String email, String password, String role, int doctorId) {
