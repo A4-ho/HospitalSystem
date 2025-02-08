@@ -1,5 +1,17 @@
 package src.models;
 
+<<<<<<< Updated upstream
+=======
+import src.enums.SymptomsEnum;
+
+public class Patient {
+    private int id;
+    private String name;
+    private String surname;
+    private int age;
+    private String gender;
+    private String email;
+>>>>>>> Stashed changes
 
 public class Patient extends src.models.User {
     private int doctorId; // Assigned doctor
