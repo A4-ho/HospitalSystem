@@ -14,7 +14,7 @@ public class HospitalSystem {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "admin");
+        DatabaseConnection db = new DatabaseConnection("localhost", "5433", "postgres", "postgres", "12345");
         Connection connection = db.getConnection();
 
         if (connection != null) {
