@@ -10,4 +10,6 @@ public interface IDoctorRepository extends CrudRepository<Doctor> {
     List<Doctor> getAllDoctors();
     boolean updateDoctorRole(int id, String role);
     boolean deleteDoctor(int id);
+    List<Doctor> findAvailableDoctorsBySpecialization(String specialization);
+
 }
