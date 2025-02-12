@@ -67,4 +67,22 @@ public class UserRepository {
         }
         return users;
     }
+
+    public void register(User user) {
+        String sql = "INSERT INTO users (name,surname ,email, password, role) VALUES (?,?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getSurname());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword()); // Consider hashing the password before storing
+            stmt.setString(4, user.getRole());
+            stmt.executeUpdate();
+            System.out.println("✅ User registered successfully!");
+        } catch (SQLException e) {
+            System.err.println("❌ Error registering user: " + e.getMessage());
+        }
+    }
+
+    public User authenticate(String email, String password) {
+    }
 }
