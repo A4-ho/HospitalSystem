@@ -54,4 +54,31 @@ public class PatientRepository {
             e.printStackTrace();
         }
         return patients;
-    }}
+    }
+
+    public Patient getPatientByEmail(String email) {
+        String query = "SELECT * FROM patients WHERE email = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return new Patient(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("surname"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getInt("doctor_id") // Assuming there is a doctor_id column
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("❌ Error fetching patient by email: " + e.getMessage());
+        }
+
+        return null; // Return null if no patient was found
+    }
+
+}

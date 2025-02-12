@@ -85,4 +85,30 @@
             }
             return doctors;
         }
+
+        public Doctor getDoctorByEmail(String email) {
+            String query = "SELECT * FROM doctors WHERE email = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, email);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    return new Doctor(
+                            resultSet.getInt("id"),
+                            resultSet.getString("name"),
+                            resultSet.getString("surname"),
+                            resultSet.getString("email"),
+                            resultSet.getString("password"),
+                            "doctor", // Hardcoded since doctors always have the "doctor" role
+                            resultSet.getString("specialization")
+                    );
+                }
+            } catch (SQLException e) {
+                System.err.println("❌ Error fetching doctor by email: " + e.getMessage());
+            }
+
+            return null; // Return null if no doctor is found
+        }
+
     }

@@ -3,7 +3,7 @@ package src.db;
 import src.db.interfaces.IDB;
 import java.sql.*;
 
-public class DatabaseConnection implements IDB {
+public class DatabaseConnection implements IDB,AutoCloseable {
     private String host;
     private String username;
     private String password;
