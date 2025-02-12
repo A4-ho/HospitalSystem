@@ -4,6 +4,7 @@ import src.models.Patient;
 import src.repositories.AppointmentRepository;
 import src.repositories.DoctorRepository;
 import src.repositories.PatientRepository   ;
+
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,7 +15,7 @@ public class HospitalSystem {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "9865");
+        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "HospitalSystem", "postgres", "4995475");
         Connection connection = db.getConnection();
 
         if (connection != null) {
@@ -67,7 +68,7 @@ public class HospitalSystem {
         System.out.print("Enter Doctor's Password: ");
         String password = scanner.nextLine();
 
-        Doctor doctor = new Doctor('0',name, surname, email, password, "Doctor", specialization);
+        Doctor doctor = new Doctor('0',name, surname, email, password, "doctor", specialization);
         doctorRepository.addDoctor(doctor);
         System.out.println("✅ Doctor added successfully.");
     }
@@ -93,9 +94,11 @@ public class HospitalSystem {
         String email = scanner.nextLine();
         System.out.print("Enter Patient's Password: ");
         String password = scanner.nextLine();
+        System.out.print("Enter Patient's Role: ");
+        String role = scanner.nextLine();
 
         // Creating a Patient with default ID (0) and doctorId (-1)
-        Patient patient = new Patient(0, name, surname, email, password, "Patient", -1);
+        Patient patient = new Patient(0, name, surname, email, password, role, -1);
 
         // Add patient to the repository (which will update the ID)
         patientRepository.addPatient(patient);

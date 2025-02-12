@@ -97,10 +97,10 @@ public class AppointmentRepository implements IAppointment {
         List<Appointment> appointments = new ArrayList<>();
         String sql = """
         SELECT a.id, 
-               CONCAT(d.first_name, ' ', d.last_name) AS doctorName, 
+               CONCAT(d.surname, ' ', d.name) AS doctorName, 
                a.appointment_date, a.appointment_time
         FROM appointments a
-        JOIN doctors d ON a.doctor_id = d.id
+        JOIN doctor d ON a.doctor_id = d.id
         WHERE a.patient_id = ?;
         """;
 
