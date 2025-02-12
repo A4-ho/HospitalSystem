@@ -85,4 +85,36 @@
             }
             return doctors;
         }
+
+        public void removeDoctor(int id) {
+            String checkSql = "SELECT id FROM doctor WHERE id = ?";
+            String deleteSql = "DELETE FROM doctor WHERE id = ?";
+
+            try (PreparedStatement checkStmt = connection.prepareStatement(checkSql)) {
+                checkStmt.setInt(1, id);
+                ResultSet rs = checkStmt.executeQuery();
+
+                if (!rs.next()) {
+                    System.out.println("⚠️ No doctor found with ID: " + id);
+                    return;
+                }
+            } catch (SQLException e) {
+                System.err.println("❌ Error checking doctor existence: " + e.getMessage());
+                return;
+            }
+
+            try (PreparedStatement deleteStmt = connection.prepareStatement(deleteSql)) {
+                deleteStmt.setInt(1, id);
+                int rowsAffected = deleteStmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("✅ Doctor with ID " + id + " successfully removed.");
+                } else {
+                    System.out.println("⚠️ Doctor not found.");
+                }
+            } catch (SQLException e) {
+                System.err.println("❌ Error removing doctor: " + e.getMessage());
+            }
+        }
+
     }

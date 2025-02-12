@@ -13,31 +13,16 @@ public class Appointment {
     private String patientName;
 
     // Constructor for basic appointments
-    public Appointment(int id, int patientId, int doctorId, LocalDate appointmentDate, LocalTime appointmentTime) {
+    public Appointment(int id, int patientId, int doctorId, LocalDate appointmentDate, LocalTime appointmentTime, String doctorName, String patientName) {
         this.id = id;
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
-    }
-
-    // Constructor for detailed appointments (used when fetching doctor/patient names)
-    public Appointment(int id, String patientName, String doctorName, LocalDate appointmentDate, LocalTime appointmentTime) {
-        this.id = id;
-        this.patientName = patientName;
         this.doctorName = doctorName;
-        this.appointmentDate = appointmentDate;
-        this.appointmentTime = appointmentTime;
+        this.patientName = patientName;
     }
 
-    // Getters
-    public int getId() { return id; }
-    public int getPatientId() { return patientId; }
-    public int getDoctorId() { return doctorId; }
-    public LocalDate getAppointmentDate() { return appointmentDate; }
-    public LocalTime getAppointmentTime() { return appointmentTime; }
-    public String getDoctorName() { return doctorName; }
-    public String getPatientName() { return patientName; }
 
     @Override
     public String toString() {
@@ -48,7 +33,17 @@ public class Appointment {
                 ", appointmentDate=" + appointmentDate +
                 ", appointmentTime=" + appointmentTime +
                 ", doctorName='" + doctorName + '\'' +
-                ", patientName='" + patientName + '\'' + '}';
+                ", patientName='" + patientName + '\'' +
+                '}';
     }
+
+    public int getId() { return id; }
+    public int getPatientId() { return patientId; }
+    public int getDoctorId() { return doctorId; }
+    public LocalDate getAppointmentDate() { return appointmentDate; }
+    public LocalTime getAppointmentTime() { return appointmentTime; }
+
+    // ✅ Добавленные геттеры:
+    public String getDoctorName() { return doctorName; }
+    public String getPatientName() { return patientName; }
 }
-//ghjkl;'
