@@ -9,7 +9,7 @@ public class Doctor extends User {
         this.specialization = specialization;
     }
 
-    // Геттер
+    // Геттер для specialty
     public String getSpecialization() {
         return specialization;
     }

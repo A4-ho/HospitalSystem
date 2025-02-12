@@ -4,6 +4,7 @@ import src.models.Patient;
 import src.repositories.AppointmentRepository;
 import src.repositories.DoctorRepository;
 import src.repositories.PatientRepository;
+import src.repositories.UserRepository;
 
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -19,27 +20,26 @@ public class HospitalSystem {
     private static String currentUserRole = "";
 
     public static void main(String[] args) {
-        try (DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "9865");
-             Connection connection = db.getConnection()) {
+        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "9865");
+        Connection connection = db.getConnection();
 
-            if (connection != null) {
-                System.out.println("✅ Successfully connected to the database!");
-                DoctorRepository doctorRepository = new DoctorRepository(connection);
-                PatientRepository patientRepository = new PatientRepository(connection);
-                AppointmentRepository appointmentRepository = new AppointmentRepository(connection);
+        if (connection != null) {
+            System.out.println("✅ Successfully connected to the database!");
+            DoctorRepository doctorRepository = new DoctorRepository(connection);
+            PatientRepository patientRepository = new PatientRepository(connection);
+            AppointmentRepository appointmentRepository = new AppointmentRepository(connection);
+            UserRepository userRepository = new UserRepository(connection);
 
-                while (true) {
-                    handleUserSession(doctorRepository, patientRepository, appointmentRepository);
-                }
-            } else {
-                System.err.println("❌ Connection to the database failed!");
+            while (true) {
+                handleUserSession(doctorRepository, patientRepository, appointmentRepository,userRepository);
             }
-        } catch (Exception e) {
-            System.err.println("❌ An error occurred: " + e.getMessage());
+        } else {
+            System.err.println("❌ Connection to the database failed!");
         }
+
     }
 
-    private static void handleUserSession(DoctorRepository doctorRepository, PatientRepository patientRepository, AppointmentRepository appointmentRepository) {
+    private static void handleUserSession(DoctorRepository doctorRepository, PatientRepository patientRepository, AppointmentRepository appointmentRepository, UserRepository userRepository) {
         if (currentUserRole.isEmpty()) {
             System.out.println("\n=== 🔑 Login / Register ===");
             System.out.println("1. 🔐 Login");
@@ -49,7 +49,7 @@ public class HospitalSystem {
 
             switch (scanner.nextLine()) {
                 case "1" -> login(doctorRepository, patientRepository);
-                case "2" -> register(doctorRepository, patientRepository);
+                case "2" -> register(doctorRepository, patientRepository,userRepository);
                 case "3" -> {
                     System.out.println("👋 Exiting system... Goodbye!");
                     return;
@@ -57,7 +57,7 @@ public class HospitalSystem {
                 default -> System.out.println("⚠️ Invalid option. Please try again.");
             }
         } else {
-            showMenu(doctorRepository, patientRepository, appointmentRepository);
+            showMenu(doctorRepository, patientRepository, appointmentRepository,userRepository);
         }
     }
 
@@ -84,19 +84,19 @@ public class HospitalSystem {
         }
     }
 
-    private static void register(DoctorRepository doctorRepository, PatientRepository patientRepository) {
+    private static void register(DoctorRepository doctorRepository, PatientRepository patientRepository,UserRepository userRepository) {
         System.out.print("Register as (doctor/patient): ");
         String role = scanner.nextLine();
         if (role.equalsIgnoreCase(ROLE_DOCTOR)) {
             addDoctor(doctorRepository);
         } else if (role.equalsIgnoreCase(ROLE_PATIENT)) {
-            addPatient(patientRepository);
+            addPatient(userRepository,patientRepository);
         } else {
             System.out.println("❌ Invalid role.");
         }
     }
 
-    private static void showMenu(DoctorRepository doctorRepository, PatientRepository patientRepository, AppointmentRepository appointmentRepository) {
+    private static void showMenu(DoctorRepository doctorRepository, PatientRepository patientRepository, AppointmentRepository appointmentRepository, UserRepository userRepository) {
         System.out.println("\n=== 🏥 Hospital Management System ===");
         switch (currentUserRole) {
             case ROLE_ADMIN -> {
@@ -119,10 +119,10 @@ public class HospitalSystem {
         }
 
         System.out.print("🔹 Choose an option: ");
-        handleMenuSelection(doctorRepository, patientRepository, appointmentRepository);
+        handleMenuSelection(doctorRepository, patientRepository, appointmentRepository,userRepository);
     }
 
-    private static void handleMenuSelection(DoctorRepository doctorRepository, PatientRepository patientRepository, AppointmentRepository appointmentRepository) {
+    private static void handleMenuSelection(DoctorRepository doctorRepository, PatientRepository patientRepository, AppointmentRepository appointmentRepository, UserRepository userRepository) {
         switch (scanner.nextLine()) {
             case "1" -> {
                 if (currentUserRole.equals(ROLE_ADMIN)) addDoctor(doctorRepository);
@@ -130,7 +130,7 @@ public class HospitalSystem {
                 else if (currentUserRole.equals(ROLE_PATIENT)) bookAppointment(doctorRepository, appointmentRepository);
             }
             case "2" -> {
-                if (currentUserRole.equals(ROLE_ADMIN)) addPatient(patientRepository);
+                if (currentUserRole.equals(ROLE_ADMIN)) addPatient(userRepository,patientRepository);
                 else if (currentUserRole.equals(ROLE_DOCTOR)) bookAppointment(doctorRepository, appointmentRepository);
                 else if (currentUserRole.equals(ROLE_PATIENT)) logout();
             }
@@ -178,7 +178,7 @@ public class HospitalSystem {
         }
     }
 
-    private static void addPatient(PatientRepository patientRepository) {
+    private static void addPatient(UserRepository userRepository, PatientRepository patientRepository) {
         System.out.print("Enter Patient's Name: ");
         String name = scanner.nextLine();
         System.out.print("Enter Patient's Surname: ");
@@ -187,13 +187,19 @@ public class HospitalSystem {
         String email = scanner.nextLine();
         System.out.print("Enter Patient's Password: ");
         String password = scanner.nextLine();
-        System.out.print("Enter Patient's Role: ");
-        String role = scanner.nextLine();
 
-        Patient patient = new Patient(0, name, surname, email, password, role, -1);
-        patientRepository.addPatient(patient);
+        String role = "patient"; // Роль фиксирована для пациента
+
+        int userId = userRepository.addUser(name, surname, email, password, role);
+        if (userId == -1) {
+            System.err.println("❌ Failed to add user.");
+            return;
+        }
+
+        patientRepository.addPatient(userId); // Добавляем пациента
         System.out.println("✅ Patient added successfully.");
     }
+
 
     private static void listAllPatients(PatientRepository patientRepository) {
         System.out.println("\n--- 🏥 List of Patients ---");

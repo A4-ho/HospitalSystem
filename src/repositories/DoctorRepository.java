@@ -14,25 +14,34 @@
         }
 
         public int addDoctor(Doctor doctor) {
-            String sql = "INSERT INTO doctor (name, surname, email, specialization, password, role) VALUES (?, ?, ?, ?, ?, ?) RETURNING id";
+            String insertUserSQL = "INSERT INTO users (username, password_hash, role, name, surname) VALUES (?, ?, 'doctor', ?, ?) RETURNING id";
+            String insertDoctorSQL = "INSERT INTO doctors (user_id, specialty) VALUES (?, ?)";
 
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setString(1, doctor.getName());
-                stmt.setString(2, doctor.getSurname());
-                stmt.setString(3, doctor.getEmail());
-                stmt.setString(4, doctor.getSpecialization());
-                stmt.setString(5, doctor.getPassword());
-                stmt.setString(6, doctor.getRole());
+            try (Connection conn = connection;
+                 PreparedStatement userStmt = conn.prepareStatement(insertUserSQL);
+                 PreparedStatement doctorStmt = conn.prepareStatement(insertDoctorSQL)) {
 
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        return rs.getInt("id"); // Получаем id нового доктора
-                    }
+                // Добавляем пользователя
+                userStmt.setString(1, doctor.getEmail()); // username = email
+                userStmt.setString(2, doctor.getPassword()); // Пароль (должен быть хеширован)
+                userStmt.setString(3, doctor.getName());
+                userStmt.setString(4, doctor.getSurname());
+
+                ResultSet rs = userStmt.executeQuery();
+                if (rs.next()) {
+                    int userId = rs.getInt("id");
+
+                    // Добавляем доктора
+                    doctorStmt.setInt(1, userId);
+                    doctorStmt.setString(2, doctor.getSpecialization());
+                    doctorStmt.executeUpdate();
+
+                    return userId;
                 }
             } catch (SQLException e) {
                 System.err.println("❌ Ошибка при добавлении доктора: " + e.getMessage());
             }
-            return -1; // Если не удалось вставить
+            return -1;
         }
 
 

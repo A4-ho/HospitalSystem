@@ -12,19 +12,26 @@ public class UserRepository {
         this.connection = connection;
     }
 
-    public void addUser(User user) {
-        String sql = "INSERT INTO users (email, password, role, name, surname) VALUES (?, ?, ?, ?, ?)";
+    public int addUser(String name, String surname, String email, String password, String role) {
+        String sql = "INSERT INTO users (name, surname, email, password_hash, role) VALUES (?, ?, ?, ?, ?) RETURNING id";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, user.getEmail());
-            stmt.setString(2, user.getPassword());
-            stmt.setString(3, user.getRole());
-            stmt.setString(4, user.getName());
-            stmt.setString(5, user.getSurname());
-            stmt.executeUpdate();
+            stmt.setString(1, name);
+            stmt.setString(2, surname);
+            stmt.setString(3, email);
+            stmt.setString(4, password); // Здесь лучше использовать хеширование пароля
+            stmt.setString(5, role);
+
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
         } catch (SQLException e) {
-            System.err.println("Ошибка при добавлении пользователя: " + e.getMessage());
+            System.err.println("❌ Ошибка при добавлении пользователя: " + e.getMessage());
         }
+        return -1; // Если что-то пошло не так
     }
+
 
     public User getUserByEmail(String email) {
         String sql = "SELECT * FROM users WHERE email = ?";

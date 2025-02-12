@@ -1,25 +1,24 @@
 package src.models;
-public class Patient extends src.models.User {
-    private int doctorId; // Assigned doctor
 
-    public Patient(int id, String name, String surname, String email, String password, String role, int doctorId) {
-        super(id, name, surname, email, password, role); // Pass id to User constructor
-        this.doctorId = doctorId;
+public class Patient extends User {
+    private int userId;
+
+    public Patient(int id, int userId, String name, String surname, String email, String password, String role) {
+        super(userId, name, surname, email, password, role);
+        this.userId = userId;
     }
 
-    public int getDoctorId() { return doctorId; }
-    public void setDoctorId(int doctorId) { this.doctorId = doctorId; }
+    public int getUserId() { return userId; }
 
     @Override
     public String toString() {
         return "Patient{" +
-                "id=" + getId() +   // Use getId() instead of accessing id directly
+                "id=" + getId() +
+                ", userId=" + userId +
                 ", name='" + getName() + '\'' +
                 ", surname='" + getSurname() + '\'' +
                 ", email='" + getEmail() + '\'' +
-                ", password='" + getPassword() + '\'' +
-                ", role=" + getRole() +
-                ", doctorId=" + doctorId +
+                ", role='" + getRole() + '\'' +
                 '}';
     }
 }
