@@ -68,7 +68,7 @@ public class HospitalSystem {
         System.out.print("Enter Doctor's Password: ");
         String password = scanner.nextLine();
 
-        Doctor doctor = new Doctor(1,name, surname, email, password, "doctor", specialization);
+        Doctor doctor = new Doctor(0,name, surname, email, password, "doctor", specialization);
         doctorRepository.addDoctor(doctor);
         System.out.println("✅ Doctor added successfully.");
     }
