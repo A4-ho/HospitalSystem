@@ -4,6 +4,7 @@ import src.models.Patient;
 import src.repositories.AppointmentRepository;
 import src.repositories.DoctorRepository;
 import src.repositories.PatientRepository   ;
+
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,7 +15,7 @@ public class HospitalSystem {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "postgres", "postgres", "admin");
+        DatabaseConnection db = new DatabaseConnection("localhost", "5432", "HospitalSystem", "postgres", "4995475");
         Connection connection = db.getConnection();
 
         if (connection != null) {
