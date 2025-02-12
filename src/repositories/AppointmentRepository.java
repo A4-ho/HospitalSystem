@@ -47,10 +47,11 @@ public class AppointmentRepository implements IAppointment {
             while (rs.next()) {
                 Appointment appointment = new Appointment(
                         rs.getInt("id"),
-                        rs.getInt("patient_id"),
-                        rs.getInt("doctor_id"),
+                        rs.getString("patientName"),
+                        rs.getString("doctorName"),
                         rs.getDate("appointment_date").toLocalDate(),
                         rs.getTime("appointment_time").toLocalTime()
+
                 );
                 appointments.add(appointment);
             }
@@ -96,13 +97,14 @@ public class AppointmentRepository implements IAppointment {
     public List<Appointment> getAppointmentsByPatient(int patientId) {
         List<Appointment> appointments = new ArrayList<>();
         String sql = """
-        SELECT a.id, 
-               CONCAT(d.surname, ' ', d.name) AS doctorName, 
-               a.appointment_date, a.appointment_time
-        FROM appointments a
-        JOIN doctor d ON a.doctor_id = d.id
-        WHERE a.patient_id = ?;
-        """;
+    SELECT a.id, 
+           CONCAT(d.name, ' ', d.surname) AS doctorName, 
+           a.appointment_date, a.appointment_time
+    FROM appointments a
+    JOIN doctor d ON a.doctor_id = d.id
+    WHERE a.id = ?;
+""";
+
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, patientId);

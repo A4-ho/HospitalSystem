@@ -12,18 +12,11 @@ public class Appointment {
     private String doctorName;
     private String patientName;
 
-    // Constructor for basic appointments
-    public Appointment(int id, int patientId, int doctorId, LocalDate appointmentDate, LocalTime appointmentTime) {
-        this.id = id;
-        this.patientId = patientId;
-        this.doctorId = doctorId;
-        this.appointmentDate = appointmentDate;
-        this.appointmentTime = appointmentTime;
-    }
-
     // Constructor for detailed appointments (used when fetching doctor/patient names)
     public Appointment(int id, String patientName, String doctorName, LocalDate appointmentDate, LocalTime appointmentTime) {
         this.id = id;
+        this.patientId = patientId;
+        this.doctorId = doctorId;
         this.patientName = patientName;
         this.doctorName = doctorName;
         this.appointmentDate = appointmentDate;

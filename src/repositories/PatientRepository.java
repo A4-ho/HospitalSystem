@@ -26,7 +26,6 @@ public class PatientRepository {
             if (rs.next()) {
                 int generatedId = rs.getInt("id");
                 patient.setId(generatedId);  // Set ID in the object
-                System.out.println("✅ Patient added successfully with ID: " + generatedId);
             }
         } catch (SQLException e) {
             e.printStackTrace();
