@@ -3,13 +3,16 @@ import src.models.Doctor;
 import src.models.Patient;
 import src.repositories.AppointmentRepository;
 import src.repositories.DoctorRepository;
-import src.repositories.PatientRepository   ;
+import src.repositories.PatientRepository;
 
+import java.util.regex.Pattern;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class HospitalSystem {
     private static final Scanner scanner = new Scanner(System.in);
@@ -23,7 +26,7 @@ public class HospitalSystem {
 
             DoctorRepository doctorRepository = new DoctorRepository(connection);
             PatientRepository patientRepository = new PatientRepository(connection);
-            AppointmentRepository apointmentRepository = new AppointmentRepository(connection);
+            AppointmentRepository appointmentRepository = new AppointmentRepository(connection);
 
             while (true) {
                 System.out.println("\n=== 🏥 Hospital Management System ===");
@@ -42,7 +45,7 @@ public class HospitalSystem {
                     case "2" -> addPatient(patientRepository);
                     case "3" -> listAllDoctors(doctorRepository);
                     case "4" -> listAllPatients(patientRepository);
-                    case "5" -> bookAppointment(doctorRepository, apointmentRepository);
+                    case "5" -> bookAppointment(doctorRepository, appointmentRepository);
                     case "6" -> {
                         System.out.println("👋 Exiting system... Goodbye!");
                         db.close();
@@ -56,22 +59,54 @@ public class HospitalSystem {
         }
     }
 
-    private static void addDoctor(DoctorRepository doctorRepository) {
-        System.out.print("Enter Doctor's Name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter Doctor's Surname: ");
-        String surname = scanner.nextLine();
-        System.out.print("Enter Doctor's Specialization: ");
-        String specialization = scanner.nextLine();
-        System.out.print("Enter Doctor's Email: ");
-        String email = scanner.nextLine();
-        System.out.print("Enter Doctor's Password: ");
-        String password = scanner.nextLine();
 
-        Doctor doctor = new Doctor(0,name, surname, email, password, "doctor", specialization);
+    private static void addDoctor(DoctorRepository doctorRepository) {
+        String name, surname, specialization, email, password;
+
+        // Validate Name
+        while (true) {
+            System.out.print("Enter Doctor's Name: ");
+            name = scanner.nextLine().trim();
+            if (name.matches("[A-Za-z]{2,}")) break;
+            System.out.println("⚠️ Invalid name. Only letters allowed, at least 2 characters.");
+        }
+
+        // Validate Surname
+        while (true) {
+            System.out.print("Enter Doctor's Surname: ");
+            surname = scanner.nextLine().trim();
+            if (surname.matches("[A-Za-z]{2,}")) break;
+            System.out.println("⚠️ Invalid surname. Only letters allowed, at least 2 characters.");
+        }
+
+        // Validate Specialization
+        while (true) {
+            System.out.print("Enter Doctor's Specialization: ");
+            specialization = scanner.nextLine().trim();
+            if (specialization.matches("[A-Za-z ]{3,}")) break;
+            System.out.println("⚠️ Invalid specialization. Only letters allowed, at least 3 characters.");
+        }
+
+        // Validate Email
+        while (true) {
+            System.out.print("Enter Doctor's Email: ");
+            email = scanner.nextLine().trim();
+            if (Pattern.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", email)) break;
+            System.out.println("⚠️ Invalid email format. Example: example@mail.com");
+        }
+
+        // Validate Password
+        while (true) {
+            System.out.print("Enter Doctor's Password: ");
+            password = scanner.nextLine().trim();
+            if (password.length() >= 6) break;
+            System.out.println("⚠️ Password must be at least 6 characters long.");
+        }
+
+        Doctor doctor = new Doctor(0, name, surname, email, password, "doctor", specialization);
         doctorRepository.addDoctor(doctor);
-        System.out.println("✅ Doctor added successfully.");
     }
+
 
     private static void listAllDoctors(DoctorRepository doctorRepository) {
         System.out.println("\n--- 👨‍⚕️ List of Doctors ---");
@@ -79,33 +114,58 @@ public class HospitalSystem {
         if (doctors.isEmpty()) {
             System.out.println("⚠️ No doctors found in the system.");
         } else {
-            for (Doctor doctor : doctors) {
-                System.out.println(doctor);
-            }
+            doctors.forEach(System.out::println);  // Using forEach lambda expression
         }
     }
 
+
     private static void addPatient(PatientRepository patientRepository) {
-        System.out.print("Enter Patient's Name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter Patient's Surname: ");
-        String surname = scanner.nextLine();
-        System.out.print("Enter Patient's Email: ");
-        String email = scanner.nextLine();
-        System.out.print("Enter Patient's Password: ");
-        String password = scanner.nextLine();
-        System.out.print("Enter Patient's Role: ");
-        String role = scanner.nextLine();
+        String name, surname, email, password, role;
 
-        // Creating a Patient with default ID (0) and doctorId (-1)
+        // Validate Name
+        while (true) {
+            System.out.print("Enter Patient's Name: ");
+            name = scanner.nextLine().trim();
+            if (name.matches("[A-Za-z]{2,}")) break;
+            System.out.println("⚠️ Invalid name. Only letters allowed, at least 2 characters.");
+        }
+
+        // Validate Surname
+        while (true) {
+            System.out.print("Enter Patient's Surname: ");
+            surname = scanner.nextLine().trim();
+            if (surname.matches("[A-Za-z]{2,}")) break;
+            System.out.println("⚠️ Invalid surname. Only letters allowed, at least 2 characters.");
+        }
+
+        // Validate Email
+        while (true) {
+            System.out.print("Enter Patient's Email: ");
+            email = scanner.nextLine().trim();
+            if (Pattern.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", email)) break;
+            System.out.println("⚠️ Invalid email format. Example: example@mail.com");
+        }
+
+        // Validate Password
+        while (true) {
+            System.out.print("Enter Patient's Password: ");
+            password = scanner.nextLine().trim();
+            if (password.length() >= 6) break;
+            System.out.println("⚠️ Password must be at least 6 characters long.");
+        }
+
+        // Validate Role
+        while (true) {
+            System.out.print("Enter Patient's Role (should be 'patient'): ");
+            role = scanner.nextLine().trim().toLowerCase();
+            if (role.equals("patient")) break;
+            System.out.println("⚠️ Invalid role. Role should be 'patient'.");
+        }
+
         Patient patient = new Patient(0, name, surname, email, password, role, -1);
-
-        // Add patient to the repository (which will update the ID)
         patientRepository.addPatient(patient);
-
         System.out.println("✅ Patient added successfully.");
     }
-
 
     private static void listAllPatients(PatientRepository patientRepository) {
         System.out.println("\n--- 🏥 List of Patients ---");
@@ -113,9 +173,7 @@ public class HospitalSystem {
         if (patients.isEmpty()) {
             System.out.println("⚠️ No patients found in the system.");
         } else {
-            for (Patient patient : patients) {
-                System.out.println(patient);
-            }
+            patients.forEach(System.out::println);// lambda expression
         }
     }
 
@@ -124,10 +182,14 @@ public class HospitalSystem {
         String specialization = scanner.nextLine();
 
         List<Doctor> availableDoctors = doctorRepository.findAvailableDoctorsBySpecialization(specialization);
+
         if (availableDoctors.isEmpty()) {
             System.out.println("❌ No available doctors found.");
             return;
         }
+
+        // Sorting doctors alphabetically by name using lambda
+        availableDoctors.sort((d1, d2) -> d1.getName().compareToIgnoreCase(d2.getName()));
 
         System.out.println("\n📋 Available doctors:");
         for (int i = 0; i < availableDoctors.size(); i++) {
